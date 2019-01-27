@@ -1,6 +1,366 @@
-//general left and right section settings
-.page-wrapper{
+// navigation 
+.menu{
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	top: 32px;
+	height: 56px;
+	.container{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+
+	&__logo__container{
+		width: 60px;
+		height: 56px;
+
+		img{
+			width: 100%;
+		}
+	}
+
+	&__link__container__item{
+		text-decoration: none;
+		font-weight: 500;
+		font-size: 14px;
+		margin: auto 8px;
+	}
+	&__link__container__item:hover{
+		text-decoration: underline;
+	}
+
+	&__link__container__item--login{
+		margin: 0;
+		padding: 10px 16px;
+		background-color: @blue-mid;
+		border-radius: 8px;
+		transition: background-color 0.3s;
+	}
+	&__link__container__item--login:hover{
+		color: @white;
+		background-color: @orange;
+		transition: background-color 0.3s;
+	}
+}
+// section1 section-welcome
+.section-welcome{
+	background-image: url('/image/bg-img.jpg');
+	background-size: cover;
+	padding-top: 169px;
 	position: relative;
-	height: 100vh;
-	overflow: hidden;
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: linear-gradient(180deg, rgba(51, 10, 139, 0.6) 0%, #330A8B 100%);		
+		z-index: 99;
+	}
+	.container{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		z-index: 100;
+	}
+	// left title
+	.section-welcome__text h1{
+		font-weight: bold;
+		font-size: 70px;
+		width: 729px;
+	}
+	// register form
+	.register-form{
+		display: flex;
+		flex-direction: column;
+		// justify-content: space-between;
+		width: 354px;
+		height: 250px;
+		&__input{
+			margin-bottom: 16px;
+			padding: 18px 16px;
+		}
+		&__input--text{
+			border: 1px solid #828F92;
+			box-sizing: border-box;
+			border-radius: 8px;
+			background: none;
+			color: @gray;
+		}
+		&__input__checkbox{
+			display: flex;
+			justify-content: space-between;
+			align-content: center;
+			margin-bottom: 24px;
+		}
+		// custom checkbox
+		&__input--checkbox{
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			border: 1px solid @gray;
+			border-radius: 2px;
+			background: rgba(130, 143, 146, 0.14);
+			margin: 0;
+			padding: 0px;
+			width: 16px;
+			height: 16px;
+			position: relative;
+			
+		}
+		&__input--checkbox:checked:after {
+			content: '';
+			position: absolute;
+			top: 7px;
+			left: 1px;
+			// color: @white;
+			width: 6px;
+			border-top: 1px solid @white;
+			transform: rotate(45deg);
+		}
+		&__input--checkbox:checked:before {
+			content: '';
+			position: absolute;
+			top: 6px;
+			left: 4px;
+			// color: @white;
+			width: 9px;
+			border-top: 1px solid @white;
+			transform: rotate(-45deg);
+		}
+		&__input--checkbox--text{
+			color: @gray;
+			font-size: 12px;
+			font-weight: 500;
+		}
+	}
+}
+// section2 steps
+.section-steps{
+	padding: 80px 0;
+	.container{
+		display: flex;
+		justify-content: space-between;
+		// align-items: center;
+	}
+
+	.steps-description{
+		width:100%;
+		&__container{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 32px;
+			// the 1-2-3 flow
+			&__flow{
+				display: flex;
+				align-items: center;
+				&__number{
+					font-weight: bold;
+					font-size: 70px;
+					color: @blue-lite;
+					width: 43px;
+				}
+				&__dot{
+					position: relative
+				}
+				// dot
+				&__dot:after{
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 45px;
+					transform: translate(-50%, -50%);
+					width: 24px;
+					height: 24px;
+					border-radius: 50%;
+					background-color: @blue-lite;
+				}
+				// dot line
+				&__dot:before{
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 45px;
+					width: 1px;
+					height: 150px;
+					border-radius: 50%;
+					background-color: @blue-lite;
+				}
+
+				&__dot--last-dot:before{
+					display: none;
+				}
+
+			}
+			// the box descriptions
+			&__items{
+				width: 1131px;
+				display:flex;
+				background-color: @blue-lite;
+				border-radius: 8px;
+				padding: 16px;
+				position: relative;
+
+				&__image{
+					margin-right: 24px;
+				}
+
+				&__text__title{
+					font-weight: 500;
+					font-size: 20px;
+					margin-bottom: 8px;
+				}
+				&__text__content{
+					line-height: 27px;
+					font-size: 14px;
+					color: @gray-text;
+				}
+			}
+			
+		}
+		>div:last-of-type{
+			margin-bottom:0;
+		}
+	}
+
+}
+// section3 banner
+.section-banner{
+	background-color: @blue-lite;
+	padding: 16px;
+	&__title{
+		text-align: center;
+		font-size: 14px;
+		font-weight: 500;
+		color: @gray-text;
+	}
+	
+}
+// section video
+.section-video{
+	background-color: @blue-deep;
+	&__youtube{
+		width: 1003px;
+		height: 562px;
+		display: block;
+		margin: 0 auto;
+	}
+}
+// section articles
+.section-articles{
+	padding: 80px 0;
+	.container{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+	}
+	&__title{
+		font-weight: 500;
+		font-size: 24px;
+		text-align: center;
+		flex: 1 100%;
+		margin-bottom: 24px;
+	}
+	.article{
+		display: inline-block;
+		width: 405px;
+		background-color: @blue-lite;
+		border-radius: 8px;
+
+		&__image{
+			background-color: @white;
+			border-radius: 8px 8px 0px 0px;
+			height: 80px;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+		&__text{
+			padding: 16px;
+			&__title{
+				font-weight: 500;
+				font-size: 20px;
+				margin-bottom: 16px;
+			}
+			&__content{
+				line-height: 27px;
+				font-size: 14px;
+				color: @gray-text;
+				margin-bottom: 8px;
+			}
+			&__link{
+				font-weight: 500;
+				font-size: 14px;
+				font-family: @font-roboto;
+			}
+
+		}
+	}
+	
+}
+// section user count
+.section-user-count{
+	.container{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	&__users,
+	&__videos{
+		font-family: @font-roboto-mono;
+		font-weight: 500;
+		font-size: 40px;
+		color: #270470;
+	}
+}
+// footer register
+.section-register-footer{
+	background-color: @blue-lite;
+	padding: 16px;
+	.btn--register--footer{
+		margin: 0 auto;
+		display: block;
+		font-weight: 500;
+		font-size: 14px;
+		padding: 10px 42px;
+		border-radius: 100px;
+		animation: heart-beat 1s linear 2s infinite alternate;
+	}
+}
+@keyframes heart-beat {
+	0%   {transform: scale(1);}
+	15%  {transform: scale(1.2);}
+	25%  {transform: scale(1);}
+}
+
+.footer{
+	padding: 80px 45px 32px;
+	.container{
+		display: flex;
+	}
+	&__links{
+		margin-left: auto;
+		&__item{
+			margin-right: 16px;
+			font-family: @font-roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			color: @gray-text;
+		}
+	}
+	&__statement{
+		&__text{
+			font-family: @font-roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			color: @gray-text;
+		}
+	}
 }

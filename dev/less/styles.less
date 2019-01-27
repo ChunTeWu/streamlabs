@@ -2,9 +2,47 @@
 /* CSS Document */
 // SASS imports go here...
 @import "_reset";
+@import "_variable";
 @import "_main";
 
-div{
-    color: red;
-    border: 1px solid red;
+// general settings
+body{
+    font-family: @font-poppins;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    color: @white;
+    background-color: @blue-mid;
+    // background-color: white;
+}
+a{
+    color: @white;
+    transition: color 0.3s;
+}
+a:hover{
+    color: @orange;
+    transition: color 0.3s;
+}
+
+.container{
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.btn{
+    font-family: 'Poppins', sans-serif;
+    background-color: @pink-deep;
+    border-radius: 100px;
+    border: none;
+    color: @white;
+    padding: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn:hover{
+    background-color: @orange;
+    transition: all 0.3s;
+    text-decoration: underline;
 }
