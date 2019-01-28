@@ -5,6 +5,7 @@ const runSequence = require('run-sequence');
 const useref = require('gulp-useref');
 const gulpif = require('gulp-if');
 const uglify = require('gulp-uglify');
+const autoprefixer = require('gulp-autoprefixer');
 const minifyCss = require('gulp-clean-css');
 
 // less compiler 
@@ -41,7 +42,15 @@ gulp.task('browserSync', function() {
 gulp.task('default', function() {
 	runSequence(['less','browserSync'], 'watch');
   });
-
+// css prefix
+gulp.task('prefix', () =>
+    gulp.src('dev/styles/styles.css')
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('dev/styles'))
+);
 // build
 gulp.task('build', function () {
     return gulp.src('dev/*.html')
