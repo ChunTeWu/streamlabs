@@ -10,7 +10,11 @@ const minifyCss = require('gulp-clean-css');
 // less compiler 
 gulp.task('less', function () {
   return gulp.src('dev/less/styles.less')
-	.pipe(less())
+    .pipe(less())
+    .on('error', function (err) {
+        console.log(err.toString());
+        this.emit('end');
+    })
 	.pipe(gulp.dest('dev/styles'))
 	.pipe(browserSync.stream());
 });

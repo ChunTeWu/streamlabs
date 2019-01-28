@@ -1,17 +1,26 @@
+.container{
+    width: 1280px;
+	margin: 0 auto;
+	@media @desktop-large{
+		width: 100%;
+		padding: 0 20px;
+	}
+}
+
+
 // navigation 
 .menu{
 	position: fixed;
 	z-index: 999;
 	width: 100%;
-	top: 32px;
-	height: 56px;
+	padding-top: 32px;
 	.container{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		position: relative;
 	}
 	
-
 	&__logo__container{
 		width: 60px;
 		height: 56px;
@@ -20,29 +29,94 @@
 			width: 100%;
 		}
 	}
+	&__mobile__icon{
+		display: none;
+		width: 50px;
+		height: 50px;
+		cursor: pointer;
+		position: relative;
+		@media @mobile{
+			display: block;
+		}
+		span{
+			display: block;
+			width: 70%;
+			height: 2px;
+			margin: 0 auto;
+			margin-top: 50%;
+			background-color: @white;
+			border-radius: 15px;
+			transition: width 0.2s;
+		}
+		span:before, span:after{
+			content: "";
+			position: absolute;
+			left: 50%;
+			width: 70%;
+			height: 2px;
+			background-color: @white;
+			border-radius: 15px;
+			transform: translate(-50%, 0);
 
-	&__link__container__item{
-		text-decoration: none;
-		font-weight: 500;
-		font-size: 14px;
-		margin: auto 8px;
+		}
+		span:before{
+			top: 12px;
+		}
+		span:after{
+			top: 37px;
+		}
 	}
-	&__link__container__item:hover{
-		text-decoration: underline;
+	&__link__container{
+		@media @mobile {
+			display: none;
+			
+		}
+		&__item{
+			text-decoration: none;
+			font-weight: 500;
+			font-size: 14px;
+			margin: auto 8px;
+			@media @mobile {
+				font-size: 22px;
+				margin: 0;
+				margin-bottom: 25px;
+			}
+		}
+		&__item:hover{
+			text-decoration: underline;
+		}
+		&__item--login{
+			margin: 0;
+			padding: 10px 16px;
+			background-color: @blue-mid;
+			border-radius: 8px;
+			transition: background-color 0.3s;
+		}
+		&__item--login:hover{
+			color: @white;
+			background-color: @orange;
+			transition: background-color 0.3s;
+		}
+	}
+	&__link__container--mobile-active{
+		position: absolute;
+		top: 56px;
+		left: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		width: 100%;
+		height: 100vh;
+		height: calc(100vh - (56px + 32px));
+		background-color: @blue-deep;
+		padding: 15px 0;
 	}
 
-	&__link__container__item--login{
-		margin: 0;
-		padding: 10px 16px;
-		background-color: @blue-mid;
-		border-radius: 8px;
-		transition: background-color 0.3s;
-	}
-	&__link__container__item--login:hover{
-		color: @white;
-		background-color: @orange;
-		transition: background-color 0.3s;
-	}
+}
+.menu--bg-active{
+	background-color: @blue-deep;
+	opacity: 0.8;
 }
 // section1 section-welcome
 .section-welcome{
@@ -66,20 +140,49 @@
 		align-items: center;
 		position: relative;
 		z-index: 100;
+		@media @tablet {
+			align-items: flex-start;
+		}
+		@media @mobile {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 	// left title
 	.section-welcome__text h1{
 		font-weight: bold;
 		font-size: 70px;
 		width: 729px;
+		@media @desktop-large {
+			width: 650px;
+			font-size: 60px;
+		}
+		@media @tablet {
+			width: 500px;
+			font-size: 45px;
+		}
+		@media @mobile {
+			width: 450px;
+			margin: 0 auto;
+			margin-bottom: 15px;
+		}
+		@media screen and (max-width: 480px) {
+			width: 100%;
+			font-size: 30px;
+		}
 	}
 	// register form
 	.register-form{
 		display: flex;
 		flex-direction: column;
-		// justify-content: space-between;
 		width: 354px;
 		height: 250px;
+		@media @mobile {
+			width: 450px;
+		}
+		@media screen and (max-width: 480px) {
+			width: 100%;
+		}
 		&__input{
 			margin-bottom: 16px;
 			padding: 18px 16px;
@@ -96,6 +199,9 @@
 			justify-content: space-between;
 			align-content: center;
 			margin-bottom: 24px;
+			@media @mobile {
+				justify-content: flex-start;
+			}
 		}
 		// custom checkbox
 		&__input--checkbox{
@@ -110,6 +216,10 @@
 			width: 16px;
 			height: 16px;
 			position: relative;
+			@media @desktop-large {
+				margin-right: 5px;
+			}
+			
 			
 		}
 		&__input--checkbox:checked:after {
@@ -117,7 +227,6 @@
 			position: absolute;
 			top: 7px;
 			left: 1px;
-			// color: @white;
 			width: 6px;
 			border-top: 1px solid @white;
 			transform: rotate(45deg);
@@ -127,7 +236,6 @@
 			position: absolute;
 			top: 6px;
 			left: 4px;
-			// color: @white;
 			width: 9px;
 			border-top: 1px solid @white;
 			transform: rotate(-45deg);
@@ -137,15 +245,62 @@
 			font-size: 12px;
 			font-weight: 500;
 		}
+		.btn--register{
+			@media @tablet {
+				padding: 15px;
+			}
+		}
 	}
 }
 // section2 steps
 .section-steps{
 	padding: 80px 0;
-	.container{
-		display: flex;
-		justify-content: space-between;
-		// align-items: center;
+
+	// the 1-2-3 flow mobile
+	.steps-flow--mobile{
+		display: none;
+		@media @tablet {
+			display: flex;
+			justify-content: space-around;
+			margin-bottom: 30px;
+		}
+		&__container{
+			&__number{
+				font-weight: bold;
+				font-size: 70px;
+				color: @blue-lite;
+				width: 43px;
+				position: relative;
+			}
+			// dot
+			&__number:after{
+				content: "";
+				position: absolute;
+				bottom: -15px;
+				left: 50%;
+				transform: translate(-50%, 0%);
+				width: 24px;
+				height: 24px;
+				border-radius: 50%;
+				background-color: @blue-lite;
+			}
+			
+			// dot line
+			&__number:before{
+				content: "";
+				position: absolute;
+				bottom: -3px;
+				left: 50%;
+				width: 30vw;
+				height: 3px;
+				border-radius: 50%;
+				background-color: @blue-lite;
+			}
+			&__number--last-step:before{
+				display: none;
+			}
+
+		}
 	}
 
 	.steps-description{
@@ -155,7 +310,7 @@
 			justify-content: space-between;
 			align-items: center;
 			margin-bottom: 32px;
-			// the 1-2-3 flow
+			// the 1-2-3 flow desktop
 			&__flow{
 				display: flex;
 				align-items: center;
@@ -164,11 +319,17 @@
 					font-size: 70px;
 					color: @blue-lite;
 					width: 43px;
-				}
-				&__dot{
-					position: relative
+					@media @tablet {
+						display: none;
+					}
 				}
 				// dot
+				&__dot{
+					position: relative;
+					@media @tablet {
+						display: none;
+					}
+				}
 				&__dot:after{
 					content: "";
 					position: absolute;
@@ -179,7 +340,12 @@
 					height: 24px;
 					border-radius: 50%;
 					background-color: @blue-lite;
+
+					@media @desktop-large{
+						left: 25px;
+					}
 				}
+				
 				// dot line
 				&__dot:before{
 					content: "";
@@ -190,6 +356,9 @@
 					height: 150px;
 					border-radius: 50%;
 					background-color: @blue-lite;
+					@media @desktop-large{
+						left: 25px;
+					}
 				}
 
 				&__dot--last-dot:before{
@@ -206,8 +375,23 @@
 				padding: 16px;
 				position: relative;
 
+				@media @desktop-large {
+					width: 90%;
+				}
+				@media @tablet {
+					width: 100%;
+				}
+				@media @mobile {
+					flex-direction: column;
+				}
+
 				&__image{
 					margin-right: 24px;
+					@media @mobile {
+						margin-right: 0;
+						margin-bottom: 10px;
+						text-align: center;
+					}
 				}
 
 				&__text__title{
@@ -244,11 +428,30 @@
 // section video
 .section-video{
 	background-color: @blue-deep;
+	.container{
+		@media @tablet {
+			padding-top: 56.25%;
+			position: relative;
+		}
+	}
 	&__youtube{
 		width: 1003px;
 		height: 562px;
 		display: block;
 		margin: 0 auto;
+		@media @desktop-large {
+			width: 803px;
+			height: 450px;
+		}
+		@media @tablet {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
 	}
 }
 // section articles
@@ -271,6 +474,14 @@
 		width: 405px;
 		background-color: @blue-lite;
 		border-radius: 8px;
+
+		@media @desktop-large{
+			width: 32%;
+		}
+		@media @tablet{
+			width: 100%;
+			margin-bottom: 25px;
+		}
 
 		&__image{
 			background-color: @white;
@@ -309,6 +520,9 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
+		@media @mobile {
+			flex-direction: column;
+		}
 	}
 	&__users,
 	&__videos{
@@ -316,12 +530,18 @@
 		font-weight: 500;
 		font-size: 40px;
 		color: #270470;
+		@media @tablet {
+			font-size: 30px;
+		}
+		@media @mobile {
+			margin-left: auto;
+		}
 	}
 }
 // footer register
 .section-register-footer{
 	background-color: @blue-lite;
-	padding: 16px;
+	padding: 16px 0;
 	.btn--register--footer{
 		margin: 0 auto;
 		display: block;
@@ -339,12 +559,18 @@
 }
 
 .footer{
-	padding: 80px 45px 32px;
+	padding: 80px 0 32px;
 	.container{
 		display: flex;
+		@media @tablet {
+			justify-content: center;
+		}
 	}
 	&__links{
 		margin-left: auto;
+		@media @tablet {
+			margin-left: 0;
+		}
 		&__item{
 			margin-right: 16px;
 			font-family: @font-roboto;
